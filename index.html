@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎮</text></svg>" />
+    <title>Arena 2P</title>
+    <style>
+      html, body { margin: 0; height: 100%; background: #111; }
+      body { display: flex; align-items: center; justify-content: center; overflow: hidden; }
+      canvas { display: block; image-rendering: auto; }
+      #side-controls {
+        position: fixed; left: 12px; top: 50%; transform: translateY(-50%);
+        display: flex; flex-direction: column; align-items: center; gap: 16px;
+        user-select: none;
+      }
+      .emoji-button {
+        width: 36px; height: 36px; padding: 0; cursor: pointer;
+        font: 20px system-ui, "Apple Color Emoji", "Segoe UI Emoji", sans-serif; line-height: 1;
+        background: rgba(255, 255, 255, 0.8); border: none; border-radius: 8px;
+      }
+      .emoji-button:hover { background: #fff; }
+      .emoji-button.chosen { outline: 3px solid #ffd43b; outline-offset: 1px; }
+      .number-button { font-size: 15px; font-weight: bold; }
+      .wide-button { width: auto; min-width: 36px; padding: 0 6px; }
+      .picker-control { position: relative; }
+      .picker {
+        position: absolute; left: calc(100% + 10px); top: 50%; transform: translateY(-50%);
+        display: flex; gap: 6px; padding: 6px; border-radius: 10px;
+        background: rgba(20, 24, 34, 0.92); box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+      }
+      .picker[hidden] { display: none; }
+    </style>
+  </head>
+  <body>
+    <canvas id="game"></canvas>
+    <div id="side-controls">
+      <div id="view-control" class="picker-control">
+        <button class="emoji-button number-button wide-button" type="button"></button>
+        <div class="picker" hidden></div>
+      </div>
+      <div id="floor-control" class="picker-control">
+        <button id="floor" class="emoji-button" type="button"></button>
+        <div class="picker" hidden></div>
+      </div>
+      <div id="monster-control" class="picker-control">
+        <button class="emoji-button number-button wide-button" type="button"></button>
+        <div class="picker" hidden></div>
+      </div>
+      <button id="sound" class="emoji-button" type="button"></button>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
